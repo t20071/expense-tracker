@@ -26,6 +26,13 @@
     padding: 0.8rem 1.6rem;
 }
 
+/* "See how it works" is a <button>, so match the link buttons' text */
+.hero button.btn-ghost {
+    font-family: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+
 /* Mock card */
 
 .mock-card {
@@ -53,3 +60,62 @@
 .mock-amt {
     font-size: 0.875rem;
 }
+
+/* ------------------------------------------------------------------ */
+/* "See how it works" video modal                                      */
+/* ------------------------------------------------------------------ */
+
+.video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(15, 15, 15, 0.75);
+}
+
+.video-modal[hidden] { display: none; }
+
+.video-modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 880px;
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.video-modal-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.video-modal-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -2.75rem;
+    right: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.video-modal-close:hover { background: var(--accent-light); }

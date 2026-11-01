@@ -22,7 +22,7 @@
         </p>
         <div class="hero-actions">
             <a href="{{ url_for('register') }}" class="btn-primary">Start tracking free</a>
-            <a href="{{ url_for('login') }}" class="btn-ghost">Sign in</a>
+            <button type="button" class="btn-ghost" data-open-video aria-haspopup="dialog" aria-controls="video-modal">See how it works</button>
         </div>
     </div>
     <div class="hero-visual">
@@ -93,4 +93,60 @@
     </div>
 </section>
 
+<!-- "See how it works" video modal. Replace data-src with the real video's embed URL. -->
+<div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-label="See how Spendly works" hidden>
+    <div class="video-modal-dialog">
+        <button type="button" class="video-modal-close" aria-label="Close video">&times;</button>
+        <div class="video-modal-frame">
+            <iframe
+                data-src="https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0"
+                title="See how Spendly works"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    (function () {
+        var modal = document.getElementById('video-modal');
+        var iframe = modal.querySelector('iframe');
+        var closeBtn = modal.querySelector('.video-modal-close');
+        var opener = null;
+
+        function openModal(trigger) {
+            opener = trigger;
+            iframe.src = iframe.dataset.src;          // load (and autoplay) the video
+            modal.hidden = false;
+            document.body.style.overflow = 'hidden';  // stop the page scrolling behind
+            closeBtn.focus();
+        }
+
+        function closeModal() {
+            if (modal.hidden) return;
+            modal.hidden = true;
+            iframe.removeAttribute('src');            // unload the video so it stops playing
+            document.body.style.overflow = '';
+            if (opener) opener.focus();
+        }
+
+        document.querySelectorAll('[data-open-video]').forEach(function (btn) {
+            btn.addEventListener('click', function () { openModal(btn); });
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+
+        // Clicking the dark overlay (outside the dialog) closes it
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    })();
+</script>
 {% endblock %}
