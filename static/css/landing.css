@@ -1,0 +1,55 @@
+/* ------------------------------------------------------------------ */
+/* Landing page: hero section                                          */
+/* Loaded after style.css on the landing page only.                    */
+/* ------------------------------------------------------------------ */
+
+/* Align hero content with the navbar edges */
+.hero {
+    max-width: calc(var(--max-width) + 4rem);
+}
+
+.hero-badge {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    padding: 0.45rem 0.9rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    max-width: 480px;
+}
+
+.hero .btn-primary,
+.hero .btn-ghost {
+    font-size: 0.95rem;
+    padding: 0.8rem 1.6rem;
+}
+
+/* Mock card */
+
+.mock-card {
+    max-width: 410px;
+    padding: 2.5rem 2.25rem 2.25rem;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.06);
+}
+
+.mock-card-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+.mock-bars { gap: 1.1rem; }
+
+.mock-bar-row {
+    grid-template-columns: 88px 1fr 64px;
+}
+
+.mock-cat {
+    font-size: 0.875rem;
+    color: var(--ink);
+}
+
+.mock-amt {
+    font-size: 0.875rem;
+}

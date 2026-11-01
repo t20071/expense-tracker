@@ -7,3 +7,5 @@ __pycache__/
 .DS_Store
 .claude/plans/
 file.md
+
+.claude/settings.local.json
